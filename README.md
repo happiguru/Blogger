@@ -28,3 +28,36 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+### Tests
+
+- Run `rspec` from within the project root directory
+
+## Authors
+
+👤 **Stanley Enow Lekunze**
+
+- Github: [@happiguru](https://github.com/happiguru)
+- Twitter: [@Lekunze_Nley](https://twitter.com/Lekunze_Nley)
+- Linkedin: [lekunze-nley](https://www.linkedin.com/in/lekunze-nley/)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/happiguru/Blogger/issues).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Microverse
+- GitHub
+- TheOdinProject
+- Ruby
+
+## 📝 License
+
+This project is [MIT](lic.url) licensed.
