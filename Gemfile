@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Paper clip is a library that manages file attachments and uploading
-gem 'paperclip'
+gem "paperclip"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
