@@ -27,11 +27,19 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+## Prerequisite
 
-### Tests
+## Setup
+
+## Install
+
+## Usage
+
+## Run tests
 
 - Run `rspec` from within the project root directory
+
+## Deployment
 
 ## Authors
 
