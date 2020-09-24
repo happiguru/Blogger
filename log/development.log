@@ -3223,3 +3223,165 @@ Processing by TagsController#show as HTML
 Completed 200 OK in 82ms (Views: 74.7ms | ActiveRecord: 1.4ms)
 
 
+Started GET "/articles" for ::1 at 2020-09-24 14:39:22 +0400
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (17.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:4
+  Rendered articles/index.html.erb within layouts/application (33.8ms)
+Completed 200 OK in 484ms (Views: 436.3ms | ActiveRecord: 19.1ms)
+
+
+Started GET "/articles/3" for ::1 at 2020-09-24 14:39:28 +0400
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:9
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (21.9ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 3]]
+  ↳ app/views/articles/show.html.erb:4
+  [1m[35m (24.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 3]]
+  ↳ app/views/articles/show.html.erb:9
+  Rendered collection of articles/_comment.html.erb [0 times] (0.1ms)
+  Rendered comments/_form.html.erb (10.4ms)
+  Rendered articles/show.html.erb within layouts/application (134.3ms)
+Completed 200 OK in 237ms (Views: 167.4ms | ActiveRecord: 47.7ms)
+
+
+Started GET "/articles/3/edit" for ::1 at 2020-09-24 14:39:35 +0400
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:35
+  Rendering articles/edit.html.erb within layouts/application
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 3]]
+  ↳ app/models/article.rb:7
+  Rendered articles/_form.html.erb (9.8ms)
+  Rendered articles/edit.html.erb within layouts/application (35.6ms)
+Completed 200 OK in 101ms (Views: 73.1ms | ActiveRecord: 0.9ms)
+
+
+Started PATCH "/articles/3" for ::1 at 2020-09-24 14:39:43 +0400
+Processing by ArticlesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FpADJcPBuYdmZe3rF+YArmDmpd5ATlNkSLUthBoZIU49uz27QUaIK3tp6ueseYoWVcIWFIgu555zIZJZyRmH+Q==", "article"=>{"title"=>"Women and reading", "body"=>"They love to read alot. Just ask them\r\n\r\nRuby on Rails Course\r\nThis is the GitHub Actions configuration. If you are looking for the Stickler configuration, you can find it here.\r\n\r\nIf you are not familiar with linters and GitHub Actions, read root level README.\r\n\r\nSet-up GitHub Actions\r\nThis GitHub Action is going to run Rubocop and Stylelint to help you find style issues.\r\n\r\nStylelint is a linter for your stylesheets that helps you avoid errors and enforce conventions.\r\n\r\nRubocop is a Ruby static code analyzer (a.k.a. linter) and code formatter. It will enforce many of the guidelines outlined in the community Ruby Style Guide.\r\n\r\nPlease do the following steps in this order:\r\n\r\nIn the first commit of your feature branch create a .github/workflows folder and add a copy of .github/workflows/linters.yml to that folder.\r\nRemember to use the file linked above\r\nRemember that .github folder starts with a dot.\r\nDo not make any changes in config files - they represent style guidelines that you share with your team - \r\n\r\nwhich is a group of all Microverse students.\r\nIf you think that change is necessary - open a Pull Request in this repository and let your code reviewer know about it.\r\nWhen you open your first pull request you should see the result of the GitHub Actions:", "tag_list"=>"Women"}, "commit"=>"Update Article", "id"=>"3"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:39
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:40
+  [1m[36mTag Load (56.8ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? LIMIT ?[0m  [["name", "women"], ["LIMIT", 1]]
+  ↳ app/models/article.rb:12
+  [1m[36mTag Create (97.1ms)[0m  [1m[32mINSERT INTO "tags" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "women"], ["created_at", "2020-09-24 10:39:43.632078"], ["updated_at", "2020-09-24 10:39:43.632078"]]
+  ↳ app/models/article.rb:12
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 3]]
+  ↳ app/models/article.rb:13
+  [1m[36mTagging Create (2.8ms)[0m  [1m[32mINSERT INTO "taggings" ("tag_id", "article_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["tag_id", 8], ["article_id", 3], ["created_at", "2020-09-24 10:39:43.777571"], ["updated_at", "2020-09-24 10:39:43.777571"]]
+  ↳ app/models/article.rb:13
+  [1m[35m (192.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:40
+Redirected to http://localhost:3000/articles/3
+Completed 302 Found in 428ms (ActiveRecord: 352.3ms)
+
+
+Started GET "/articles/3" for ::1 at 2020-09-24 14:39:44 +0400
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:9
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 3]]
+  ↳ app/views/articles/show.html.erb:4
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 3]]
+  ↳ app/views/articles/show.html.erb:9
+  Rendered collection of articles/_comment.html.erb [0 times] (0.1ms)
+  Rendered comments/_form.html.erb (7.8ms)
+  Rendered articles/show.html.erb within layouts/application (31.7ms)
+Completed 200 OK in 101ms (Views: 91.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/tags/8" for ::1 at 2020-09-24 14:39:55 +0400
+Processing by TagsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/tags_controller.rb:7
+  Rendering tags/show.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" INNER JOIN "taggings" ON "articles"."id" = "taggings"."article_id" WHERE "taggings"."tag_id" = ?[0m  [["tag_id", 8]]
+  ↳ app/views/tags/show.html.erb:4
+  Rendered tags/show.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 47ms (Views: 40.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/articles" for ::1 at 2020-09-24 14:39:57 +0400
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:4
+  Rendered articles/index.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 115ms (Views: 109.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/articles/1" for ::1 at 2020-09-24 14:40:03 +0400
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:9
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:9
+  [1m[36mComment Load (26.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:10
+  Rendered collection of articles/_comment.html.erb [3 times] (4.3ms)
+  Rendered comments/_form.html.erb (6.4ms)
+  Rendered articles/show.html.erb within layouts/application (58.2ms)
+Completed 200 OK in 123ms (Views: 94.4ms | ActiveRecord: 26.8ms)
+
+
+Started GET "/articles/1/edit" for ::1 at 2020-09-24 14:40:16 +0400
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:35
+  Rendering articles/edit.html.erb within layouts/application
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/models/article.rb:7
+  Rendered articles/_form.html.erb (4.0ms)
+  Rendered articles/edit.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 36ms (Views: 31.3ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/articles/1" for ::1 at 2020-09-24 14:40:33 +0400
+Processing by ArticlesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9w31Pq6vSRzs4AVuSA0hsxMHEkRBgpiBeyPMri0FhblTHGWvzeAILNbWi9qNvk/+mOBPKP1QIweQvCjOfStBhw==", "article"=>{"title"=>"Sample Article Title", "body"=>"Ruby on Rails Course\r\nThis is the GitHub Actions configuration. If you are looking for the Stickler configuration, you can find it here.\r\n\r\nIf you are not familiar with linters and GitHub Actions, read root level README.\r\n\r\nSet-up GitHub Actions\r\nThis GitHub Action is going to run Rubocop and Stylelint to help you find style issues.\r\n\r\nStylelint is a linter for your stylesheets that helps you avoid errors and enforce conventions.\r\n\r\nRubocop is a Ruby static code analyzer (a.k.a. linter) and code formatter. It will enforce many of the guidelines outlined in the community Ruby Style Guide.\r\n\r\nPlease do the following steps in this order:\r\n\r\nIn the first commit of your feature branch create a .github/workflows folder and add a copy of .github/workflows/linters.yml to that folder.\r\nRemember to use the file linked above\r\nRemember that .github folder starts with a dot.\r\nDo not make any changes in config files - they represent style guidelines that you share with your team - which is a group of all Microverse students.\r\nIf you think that change is necessary - open a Pull Request in this repository and let your code reviewer know about it.\r\nWhen you open your first pull request you should see the result of the GitHub Actions:", "tag_list"=>"ruby"}, "commit"=>"Update Article", "id"=>"1"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:39
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:40
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? LIMIT ?[0m  [["name", "ruby"], ["LIMIT", 1]]
+  ↳ app/models/article.rb:12
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/models/article.rb:13
+  [1m[35m (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:40
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 24ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/articles/1" for ::1 at 2020-09-24 14:40:33 +0400
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:9
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:4
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:9
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:10
+  Rendered collection of articles/_comment.html.erb [3 times] (4.2ms)
+  Rendered comments/_form.html.erb (2.9ms)
+  Rendered articles/show.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 58ms (Views: 50.8ms | ActiveRecord: 1.2ms)
+
+
